@@ -1,0 +1,53 @@
+<div>
+    <form [formGroup]="userForm" (ngSubmit)="onEventFormSubmit()">
+        <table>
+            <tr>
+                <td>Event Id</td>
+                <td><input formControlName="eId" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input formControlName="name" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input formControlName="email" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <td><a data-toggle="collapse" href="#abc">
+                    <button>AddAgenda</button></a>
+                </td>
+            </tr>
+        </table>
+
+        <div id="abc" class="panel-collapse collapse">
+            <div class="panel-body" [formGroupName]="i">
+
+                <div class="form-group col-xs-6">
+                    <label>Id:</label>
+                    <input formControlName="id" class="form-control">
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>Street:</label>
+                    <input formControlName="street" class="form-control">
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>City:</label>
+                    <input formControlName="city" class="form-control">
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>Postalcode:</label>
+                    <input formControlName="postalcode" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <button type="button" (click)="onEventFormSubmit()" class="btn btn-primary">Add</button>
+
+
+    </form>
+
+</div>

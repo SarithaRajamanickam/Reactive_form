@@ -1,0 +1,75 @@
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="page-header">
+     
+<h2>User Data</h2></div>
+<form [formGroup]="userForm">
+<div class="form-group">
+ <label>Event Id</label>
+<input type="text" class="form-control" formControlName="eId">
+</div>
+<div class="form-group">
+<label>Name</label>
+<input type="text" class="form-control" formControlName="name">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="text" class="form-control" formControlName="email">
+
+</div>
+           
+        <div formArrayName="agenda">
+          <div *ngFor="let address of userForm.controls.agenda.controls; let i=index" class="panel panel-default">
+            <div class="panel-heading">
+              <span>Address {{i + 1}}</span>
+              <span class="glyphicon glyphicon-remove pull-right" *ngIf="userForm.controls.agenda.controls.length > 1" (click)="removeAddress(i)"></span>
+            </div>
+            <div class="panel-body" [formGroupName]="i">
+              <div class="form-group col-xs-6">
+                <label>Id</label>
+                <input type="text" class="form-control" formControlName="id">
+              </div>
+              <div class="form-group col-xs-6">
+                <label>street</label>
+                <input type="text" class="form-control" formControlName="street">
+              </div>
+              <div class="form-group col-xs-6">
+                <label>city</label>
+                <input type="text" class="form-control" formControlName="city">
+              </div>
+              <div class="form-group col-xs-6">
+                <label>postalcode</label>
+                <input type="text" class="form-control" formControlName="postalcode">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="margin-20">
+          <a (click)="addAddress()" style="cursor: default">
+            Add another address +
+          </a>
+          
+        </div>
+
+
+<button type="button" class="btn btn-success" (click)="onSubmit()">Submit</button>
+<button type="button" class="btn btn-success" (click)="toUpdate()">Update</button>
+<table>
+  <!--<th>City</th><th>Street</th><th>Postalcode</th>-->
+<thead>
+    <tr><th>Id</th><td></td><th>Name</th><td></td><th>Email</th><td></td><th>Agenda</th><th></th></tr>
+  <tr *ngFor="let game of events" >
+        <td>{{game.eId}}</td><td></td> <td>{{game.name}}</td> <td></td><td>{{game.email}}</td><td></td><td>{{game.agenda|json}}</td>
+	<td><button type="button" (click)="toEdit(game.eId)">Edit</button> </td>
+	<td><button type="button" (click)="forDelete(game.eId)">Delete</button></td>
+  </tr>
+</thead>
+</table> 
+
+</form>
+
+</div>
+</div>
